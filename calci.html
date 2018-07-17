@@ -1,0 +1,422 @@
+<html onmouseover="zz()">
+<head>
+<title>calculator</title>
+<style>
+	body
+	{
+		//width:500px;
+		display:none;
+		text-align:center;
+	}
+	h1{color:violet;}
+	pre{font-size:15px;font-weight:bold;}
+	.me
+	{
+		position:fixed;
+		background-color:white;
+		text-align:right;
+		padding-bottom:5px;
+		padding-top:5px;
+		padding-left:5px;
+		padding-right:65px;
+		color:blue;
+		text-shadow:;
+	}
+	.h4
+	{
+	position:fixed;
+	background-color:white;
+	padding-top:10px;
+	padding-left:5px;
+	padding-right:5px;
+	}
+	table
+	{
+		background-color:violet;
+		border:20px solid silver;
+	}
+	td
+	{
+		background-color:Chartreuse ;
+		border:1px solid lime;
+	}
+	.display
+	{
+		width:272px;
+		padding-left:25px;
+		padding-right:25px;
+		padding-top:18px;
+		padding-bottom:18px;
+		//color:MidnightBlue;
+		color:black;
+		font-weight:bold;
+		font-size:30px;
+		font-style:italic;
+		border:4px solid purple;
+		background-color:AliceBlue;
+	}
+
+	input
+	{
+		width:50px;
+		padding-left:15px;
+		padding-right:15px;
+		padding-top:15px;
+		padding-bottom:15px;
+		color:blue;
+		font-weight:bold;
+		font-size:20px;
+		//border:1px solid purple;
+	}
+	.ip
+	{
+		padding-left:15px;
+		padding-right:15px;
+		padding-top:15px;
+		padding-bottom:15px;
+		color:blue;
+		font-weight:bold;
+		font-size:20px;
+		//border:1px dotted purple;	
+	}
+	textarea
+	{
+		width:600px;
+		//hieght:500px;
+		padding-left:100px;
+		padding-right:100px;
+		padding-top:50px;
+		padding-bottom:250px;
+		border:2px double Aqua;
+	}
+	.eq
+	{
+		padding-left:15px;
+		padding-right:15px;
+		padding-top:70px;
+		padding-bottom:70px;
+		color:blue;
+		font-weight:bold;
+		font-size:20px;
+		//border:1px dotted purple;
+	}
+	
+	.x
+	{
+	width:55px;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size:10px;
+	}
+	.pow
+	{
+	width:55px;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size:10px;
+	}
+</style>
+</head>
+<script>
+var a="",b="",c=0,k,z="",d=0,e=0,cc,his="",key=0,k1=0,k2=0,flag=0;
+/*-----------------------------------------re-initialization to 0----------------------------------------------*/
+function refresh()
+{
+   a=b=k=z=0;
+   rr(0);
+   rr0(0);	
+   window.location.assign("cal.html");
+}
+var tt="ad";
+/*-----------------------------------------initialization for a------------------------------------------------*/
+function val(i)
+{
+count=0;
+	if(key>0)
+	{
+		 b+=""+i;
+		 rr(b);
+		 flag=0;
+		 k2=b.length;
+	}
+	else
+	{
+   	a+=""+i;
+   	rr(a);
+	flag=1;
+	k1=a.length;
+	}
+}
+var name="g";
+/*----------------------------------------------clearing digits-------------------------------------------------*/
+var count=0;
+function clr()
+{
+
+
+	if(flag==1)
+	{
+		//alert(count);
+		a=inp(a);
+		document.getElementById("ans").value=a;
+	}
+	else
+	{
+		b=inp(b);
+		document.getElementById("ans").value=b;		
+		
+	}
+
+}
+name+="u";
+/*-----------------------------------------deleting strings/array's codings--------------------------------------------*/
+var aaa="",nnn="";name+="ru";
+var kkk=new Array();
+var len;name+="pr";
+function inp(ipt)
+{
+	//aaa+=prompt("enter","");
+	aaa=ipt;
+	if(count<1)
+	{str_arr();}
+	out();
+	arr_str();
+	//document.getElementById("ans").value=aaa;
+	return aaa;
+aaa="",nnn="",kkk="",len=0;
+}
+
+function arr_str()
+{
+	nnn=aaa.toString();
+	var ans=nnn.replace(",","");
+	aaa=ans;
+	//document.getElementById("ans").value=ans;
+	while(aaa.search(",")!=-1)
+	{arr_str();}
+}
+function str_arr()
+{
+	count++;
+	for(var iii=0;iii<aaa.length;iii++)
+	{
+	kkk[iii]=aaa.charAt(iii);
+	}
+	aaa=kkk;
+	len=kkk.length;
+	//document.getElementById("ans").value=aaa+"\n"+kkk;	
+}
+function out()
+{
+	
+	delete kkk[len-1];
+	len--;
+	aaa=kkk;
+	//document.getElementById("ans").value=kkk;
+	
+}
+var q=0;
+function zzz()
+{
+var nm=document.getElementById("g").innerHTML;
+if(nm.toLocaleUpperCase()==name || nm.toLocaleLowerCase()==name)
+{qwerty(1);vi();}
+else
+{
+qwerty(0);
+var qr=prompt("enter name","?");
+if(name.toLocaleUpperCase()==qr || name.toLocaleLowerCase()==qr)
+{qwerty(1);vi();q++;}
+}
+}
+/*-----------------------------------------checking clear f'n working--------------------------------------------*/	
+function check()
+{
+var abc;
+var text="";
+	for(abc=0;abc<a.length;abc++)
+	{ text+=""+a[abc]; }
+	text+="\n";
+	for(abc=0;abc<b.length;abc++)
+	{ text+=""+b[abc]; }
+	alert(text);
+
+	
+}
+function vi()
+{document.getElementById("v").style.display="block";}
+/*-----------------------------------------choosig sign & operation--------------------------------------------*/
+function cal(s)
+{
+	if(flag==1)
+	{
+	rr0(a);
+	}
+	else
+	{rr0(b);}
+		
+   switch(s)
+   {
+      case 1:z="+";
+      break;
+      case 2:z="-";
+      break;
+      case 3:z="*";
+      break;
+      case 4:z="/";
+      break;
+   }
+	key++;
+	if(key>1)
+	{
+	eval();
+	a=c;
+	b="";
+	}
+	k=s;
+ 	rr(z);
+	rr0(z);	
+}
+function qwerty(w)
+{
+if(w==1)
+{document.getElementById("v").style.visibility="visible";}
+if(w==0)
+{document.getElementById("v").style.visibility="hidden";}
+}
+/*-----------------------------------------making calculation---------------------------------------------------*/
+name+="as"+tt;
+function eval()
+{
+a=parseFloat(a);
+b=parseFloat(b);
+//alert(a+","+b+","+c);
+   switch(k)
+   {
+      case 1:c=a+b;
+      break;
+      case 2:c=a-b;
+      break;
+      case 3:c=a*b;
+      break;
+      case 4:
+         if(b!=0)
+         {c=a/b;}
+         else
+         {c="division not posible";}
+      break;
+      
+   }
+	    if(c!=NaN)
+	    {
+            	rr(c);
+	    	rr0("=");
+	   	 rr0(c);
+	    }
+	    else
+	    {
+	    	rr("syntex error");	
+	    	rr0("=");
+	    	rr0("syntex error");
+	    }
+	
+}
+function zz()
+{
+if(q>0)
+{}
+else
+{zzz();}
+}
+/*--------------------------------------display b at final in --------------------------------------------*/
+function ab()
+{
+	rr0(b);
+}
+/*-----------------------------------------displaying output----------------------------------------------*/
+function rr(dis)
+{
+document.getElementById("ans").value=dis;
+}
+function rr0(dis)
+{
+  if(dis=="")
+  {document.getElementById("his").value+="; ";}
+document.getElementById("his").value+=dis;
+}
+function sqr(ss)
+{
+var temp;cont=0;tmp=0;
+	if(ss==0)
+	{
+		sqr=parseInt(document.getElementById("x").value);
+		temp=sqr;
+		ss=parseInt(document.getElementById("pow").value);
+	}
+	else
+	{
+		var sqr=parseInt(prompt("enter a no",""));
+	}
+	tmp=sqr;
+	for(var sq=1;sq<ss;sq++)
+		{
+			sqr=tmp*sqr;
+		}
+		tmp=sqr;
+if(temp==1){sqr=1;}
+	
+rr(sqr);rr0(" "+temp+" power "+ss+"="+sqr+" ");
+}
+</script>
+<body bgcolor="Bisque" id="v">
+<pre id="g" class="me">Guruprasad</pre>
+<center>
+<h1><u>BASIC CALCULATOR</u></h1>
+<table>
+<tr>
+	<td colspan="5"><input class="display" type="text" value="" id="ans" /></td>
+</tr>
+<tr>
+   <td><input class="ip" type="button" value=" 1 " onclick="val(1)" /></td>
+   <td><input class="ip" type="button" value=" 2 " onclick="val(2)" /></td>
+   <td><input class="ip" type="button" value=" 3 " onclick="val(3)" /></td>
+   <td><input type="button" value="+" onclick="cal(1)" /></td>
+   <td><input style="color:red;" type="button" value="CE" onclick="refresh()" /></td>
+</tr><tr>
+   <td> <input class="ip" type="button" value=" 4 " onclick="val(4)" /></td>
+   <td> <input class="ip" type="button" value=" 5 " onclick="val(5)" /></td>
+   <td><input class="ip" type="button" value=" 6 " onclick="val(6)" /></td>
+   <td><input type="button" value="-" onclick="cal(2)" /></td>
+   <td rowspan="3"><input style="color:Navy;font-size:50px;" class="eq" type="button" value="=" onclick="eval()" onmousedown="ab()" /></td>
+</tr><tr>
+   <td><input class="ip" type="button" value=" 7 " onclick="val(7)" /></td>
+   <td><input class="ip" type="button" value=" 8 " onclick="val(8)" /></td>
+   <td><input class="ip" type="button" value=" 9 " onclick="val(9)" /></td>
+   <td><input type="button" value="*" onclick="cal(3)" /></td>
+</tr><tr>
+   <td><input class="ip" type="button" value=" 0 " onclick="val(0)" /></td>
+   <td><input class="ip" type="button" value=" . " onclick="val('.')" /></td>
+   <td><input class="ip" type="button" value=" C " onclick="clr()" /></td>
+   <td><input type="button" value="/" onclick="cal(4)" /></td>
+</tr>
+</table>
+   <input style="width:90px;" type="button" value="Check " onclick="check()" />
+   <input style="width:90px;" type="button" value="square" onclick="sqr(2)" /><br />
+<p style="border:1px dotted red">
+   x=<input class="x" type="text" id="x" value="" />
+<sup>
+   <input class="pow" type="text" id="pow" value="" />=power
+</sup>
+   <input style="width:90px;" type="button" value="solve" onclick="sqr(0)" />
+</p>
+   <hr /> 
+<textarea value="" id="his"></textarea>
+ <hr /> 
+</center>
+
+</body>
+</html>
